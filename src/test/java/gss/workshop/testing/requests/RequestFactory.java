@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 public class RequestFactory extends TestBase {
 
   private static final Logger logger = Logger.getLogger(String.valueOf(RequestFactory.class));
-  private static HashMap<String, String> params = addParams(Map.of("key", key, "token", token));
 
   // -------------------Board-------------------
 
@@ -23,14 +22,15 @@ public class RequestFactory extends TestBase {
    */
   public static Response createBoard(String boardName) {
     logger.info("Creating a new board.");
+    HashMap<String, String> params = setCommonQueryParams();
     params.putAll(addParams(Map.of("name", boardName)));
-    String requestPath = String.format(prop.getProperty("boardCreationPath"), version);
+    String path = String.format(prop.getProperty("boardCreationPath"), version);
     Response res =
-        RestClient.doPostRequestWithParamsAndNoPayload(
-            requestPath,
-            params); // it calls a method of RestClient "doPostRequestWithParamsAndNoPayload"  to
+            RestClient.doPostRequestWithParamsAndNoPayload(
+                    path,
+                    params); // it calls a method of RestClient "doPostRequestWithParamsAndNoPayload" to
     // perform the Post request with specific info was prepared.
-    logger.info("Finish board creation.");
+    logger.info(String.format("The request for creating the %s board completed", boardName));
     return res;
   }
 
@@ -43,10 +43,11 @@ public class RequestFactory extends TestBase {
    */
   public static Response createBoard(String boardName, boolean defaultList) {
     logger.info("Creating a new board.");
+    HashMap<String, String> params = setCommonQueryParams();
     params.putAll(addParams(Map.of("name", boardName, "defaultLists", false)));
     String requestPath = String.format(prop.getProperty("boardCreationPath"), version);
     Response res = RestClient.doPostRequestWithParamsAndNoPayload(requestPath, params);
-    logger.info("Finish board creation.");
+    logger.info(String.format("The request for creating the %s board completed", boardName));
     return res;
   }
 
@@ -86,20 +87,29 @@ public class RequestFactory extends TestBase {
   // -------------------Card-------------------
 
   /**
+   * Create a new card in an existing list
+   *
    * @param taskName
    * @param listId
-   * @return
+   * @return Response of the request
    */
   public static Response createCard(String taskName, String listId) {
     return null;
   }
 
   /**
+   * Update an existing card
+   *
    * @param cardId
    * @param listId
-   * @return
+   * @return Response of the request
    */
   public static Response updateCard(String cardId, String listId) {
     return null;
+  }
+
+  private static HashMap setCommonQueryParams() {
+    HashMap<String, String> params = addParams(Map.of("key", key, "token", token));
+    return params;
   }
 }
