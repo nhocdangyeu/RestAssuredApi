@@ -13,7 +13,7 @@ public class TrelloTests extends TestBase {
   @Test
   public void trelloWorkflowTest() {
     // 1. Create new board without default list
-    String boardName = OtherUtils.randomName();
+    String boardName = OtherUtils.randomBoardName();
     Response resBoardCreation = RequestFactory.createBoard(boardName, false);
 
     // VP. Validate status code
