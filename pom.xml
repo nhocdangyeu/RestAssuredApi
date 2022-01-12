@@ -21,12 +21,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jsonschema2pojo</groupId>
             <artifactId>jsonschema2pojo-core</artifactId>
             <version>1.1.1</version>
@@ -114,7 +108,7 @@
                             <style>GOOGLE</style>
                         </googleJavaFormat>
                         <removeUnusedImports/>
-                        <lineEndings>UNIX</lineEndings>
+                        <lineEndings>WINDOWS</lineEndings>
                     </java>
                 </configuration>
                 <executions>

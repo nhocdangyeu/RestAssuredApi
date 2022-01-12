@@ -26,9 +26,9 @@ public class RequestFactory extends TestBase {
     params.putAll(addParams(Map.of("name", boardName)));
     String path = String.format(prop.getProperty("boardCreationPath"), version);
     Response res =
-            RestClient.doPostRequestWithParamsAndNoPayload(
-                    path,
-                    params); // it calls a method of RestClient "doPostRequestWithParamsAndNoPayload" to
+        RestClient.doPostRequestWithParamsAndNoPayload(
+            path,
+            params); // it calls a method of RestClient "doPostRequestWithParamsAndNoPayload" to
     // perform the Post request with specific info was prepared.
     logger.info(String.format("The request for creating the %s board completed", boardName));
     return res;

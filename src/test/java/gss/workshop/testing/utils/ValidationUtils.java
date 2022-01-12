@@ -1,7 +1,7 @@
 package gss.workshop.testing.utils;
 
 import io.restassured.response.Response;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class ValidationUtils {
 
